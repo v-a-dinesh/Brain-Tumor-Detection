@@ -15,13 +15,23 @@ import json
 
 app = FastAPI()
 
-# Configure CORS
+# Configure CORS - UPDATED CONFIGURATION
+origins = [
+    "https://brain-tumor-detection-neon.vercel.app",
+    "http://localhost:3000",
+    "http://localhost:3001",
+    "https://brain-tumor-detection-neon.vercel.app/",
+    "*"  # Allow all origins for testing, remove in production
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],
+    expose_headers=["*"],
+    max_age=3600,
 )
 
 # Load model
