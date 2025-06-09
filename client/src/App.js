@@ -130,7 +130,7 @@ function App() {
       imageData.push(images[i].base64_file)
     }
     const data = { image: imageData }
-    const res = await axios.post('http://127.0.0.1:5000/', data).catch((err) => {
+    const res = await axios.post('http://localhost:5000/', data).catch((err) => {
       console.log(err);
     });
     setPredictedImage(images)
